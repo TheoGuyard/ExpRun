@@ -1,0 +1,6 @@
+# Write your configuration here
+
+setup:
+  n_samples: 50
+  n_features: 100
+  n_informative: 10

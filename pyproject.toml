@@ -1,0 +1,20 @@
+[project]
+name = "experiment"
+description = "Experiment recipes with Python"
+readme = "README.md"
+license = {file = "LICENSE", content-type = "text/markdown"}
+authors = [{name = "Théo Guyard", email = "guyard.theo@gmail.com"}]
+dependencies = ["pyyaml"]
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "experiment.__version__"}
+
+[project.optional-dependencies]
+dev = ["black", "flake8"]
+
+[project.urls]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
