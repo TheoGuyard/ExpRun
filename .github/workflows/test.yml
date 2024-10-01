@@ -1,4 +1,4 @@
-name: lint
+name: test
 
 on: [push, pull_request]
 
@@ -20,7 +20,5 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install -U .[dev]
-    - name: Lint
-      run: |
-        flake8 expflow
-        flake8 examples
+    - name: Test
+      run: pytest -v

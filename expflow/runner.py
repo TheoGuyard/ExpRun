@@ -1,4 +1,6 @@
 from pathlib import Path
+from typing import Union
+from .experiment import Experiment
 
 
 class Runner:
@@ -8,11 +10,17 @@ class Runner:
 
     def run(
         self,
-        experiment_type,
-        config_path,
-        results_dir,
-        repeats=1,
-    ):
+        experiment_type: Experiment,
+        config_path: Union[str, Path],
+        results_dir: Union[str, Path],
+        repeats: int = 1,
+    ) -> None:
+
+        assert isinstance(experiment_type, Experiment)
+        assert isinstance(config_path, Path)
+        assert isinstance(results_dir, Path)
+        assert isinstance(repeats, int)
+        assert repeats > 1
 
         config_path = Path(config_path)
 
@@ -31,10 +39,14 @@ class Runner:
 
     def plot(
         self,
-        experiment_type,
-        config_path,
-        results_dir,
-    ):
+        experiment_type: Experiment,
+        config_path: Union[str, Path],
+        results_dir: Union[str, Path],
+    ) -> None:
+
+        assert isinstance(experiment_type, Experiment)
+        assert isinstance(config_path, Path)
+        assert isinstance(results_dir, Path)
 
         config_path = Path(config_path)
 
