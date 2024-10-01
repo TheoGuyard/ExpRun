@@ -12,6 +12,7 @@ version = {attr = "experiment.__version__"}
 
 [project.optional-dependencies]
 dev = ["black", "flake8"]
+examples = ["matplotlib", "numpy", "scikit-learn"]
 
 [project.urls]
 

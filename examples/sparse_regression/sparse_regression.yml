@@ -1,0 +1,15 @@
+dataset:
+  n_samples: 100
+  n_features: 100
+  n_informative: 10
+  noise: 0
+
+split:
+  test_size: 0.33
+
+model_names:
+  - elastic-net
+  - lars
+  - lasso
+  - omp
+  - ridge
