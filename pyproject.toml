@@ -1,18 +1,17 @@
 [project]
-name = "experiment"
-description = "Experiment recipes with Python"
+name = "expflow"
+description = "Simple and Automatized Numerical Experiments"
 readme = "README.md"
 license = {file = "LICENSE", content-type = "text/markdown"}
 authors = [{name = "Théo Guyard", email = "guyard.theo@gmail.com"}]
-dependencies = ["pyyaml"]
+dependencies = ["matplotlib", "numpy", "pyyaml", "scikit-learn"]
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "experiment.__version__"}
+version = {attr = "expflow.__version__"}
 
 [project.optional-dependencies]
-dev = ["black", "flake8"]
-examples = ["matplotlib", "numpy", "scikit-learn"]
+dev = ["black", "flake8", "pytest"]
 
 [project.urls]
 

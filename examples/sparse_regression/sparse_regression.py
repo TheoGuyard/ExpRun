@@ -13,7 +13,7 @@ from sklearn.metrics import mean_squared_error, f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-from experiment import Experiment, Runner
+from expflow import Experiment, Runner
 
 
 class SparseRegression(Experiment):
@@ -38,7 +38,7 @@ class SparseRegression(Experiment):
         self.y_train = y_train
         self.y_test = y_test
 
-    def run(self):
+    def run(self) -> dict:
         result = {}
         for model_name in self.config["model_names"]:
             result[model_name] = {}
@@ -65,7 +65,7 @@ class SparseRegression(Experiment):
     def cleanup(self) -> None:
         pass
 
-    def plot(self, results) -> None:
+    def plot(self, results: list[dict]) -> None:
         stats = {
             model_name: {"train_error": [], "test_error": [], "f1_score": []}
             for model_name in self.config["model_names"]
