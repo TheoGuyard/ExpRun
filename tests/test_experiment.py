@@ -36,7 +36,7 @@ class TestExperiment(Experiment):
 
 
 def test_experiment():
-    config_path = Path(__file__).parent.joinpath("test_config.yml")
+    config_path = Path(__file__).parent.joinpath("test_experiment.yml")
     experiment = TestExperiment(config_path)
     experiment.setup()
     result = experiment.run()
