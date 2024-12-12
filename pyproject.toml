@@ -11,7 +11,7 @@ dynamic = ["version"]
 version = {attr = "expflow.__version__"}
 
 [project.optional-dependencies]
-dev = ["black", "flake8", "pytest"]
+dev = ["black", "flake8", "numpy", "pytest"]
 
 [project.urls]
 
