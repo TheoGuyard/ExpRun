@@ -16,11 +16,7 @@ class Runner:
         repeats: int = 1,
     ) -> None:
 
-        assert isinstance(experiment_type, Experiment)
-        assert isinstance(config_path, Path)
-        assert isinstance(results_dir, Path)
-        assert isinstance(repeats, int)
-        assert repeats > 1
+        assert repeats >= 1
 
         config_path = Path(config_path)
 
