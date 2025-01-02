@@ -1,8 +1,9 @@
 .DS_Store
-.vscode/
+.vscode
 
-# Examples
+# Examples and experiments saves
 *.pkl
+*.pickle
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
