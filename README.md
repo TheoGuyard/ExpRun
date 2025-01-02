@@ -59,7 +59,7 @@ class MyExperiment(Experiment):
         # Nothing to clean up here
         pass
 
-    def plot(self, results: list[dict]) -> dict:
+    def plot(self, results: list) -> dict:
         # Print the mean of the sums among all the results
         # found matching the current configuration file
         sums = [result["sum"] for result in results]
