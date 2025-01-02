@@ -30,7 +30,7 @@ In the `MyExperiment` class, four functions need to be specified by the user:
 - `setup(self) -> None`: Set up the experiment from the information in the configuration file.
 - `run(self) -> dict`: Perform one run of the experiment and return the results as a dict.
 - `cleanup(self) -> None`: Clean up the experimental data.
-- `plot(self, results: list[dict]) -> dict`: Process the results obtained from a list of all the results found in the results directory that match the configuration file. Returns the plot data that must be saved.
+- `plot(self, results: list) -> dict`: Process the results obtained from a list of all the results found in the results directory that match the configuration file. Returns the plot data that must be saved.
 
 For instance, a simple experiment that computes the sum of two numbers within a range specified in the configuration file could be defined as follows.
 First, let's write the `config.yml` file.
