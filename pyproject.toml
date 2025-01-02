@@ -4,14 +4,14 @@ description = "Simple and Automatized Numerical Experiments"
 readme = "README.md"
 license = {file = "LICENSE", content-type = "text/markdown"}
 authors = [{name = "Théo Guyard", email = "guyard.theo@gmail.com"}]
-dependencies = ["matplotlib", "numpy", "pyyaml", "scikit-learn"]
+dependencies = ["pyyaml"]
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 version = {attr = "expflow.__version__"}
 
 [project.optional-dependencies]
-dev = ["black", "flake8", "pytest"]
+dev = ["black", "flake8", "numpy", "pytest"]
 
 [project.urls]
 

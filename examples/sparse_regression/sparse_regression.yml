@@ -1,15 +1,31 @@
 dataset:
-  n_samples: 100
-  n_features: 100
-  n_informative: 10
-  noise: 0
+  t: 0.
+  k: 10
+  m: 100
+  n: 300
+  r: 0.9
+  s: 10.
 
-split:
-  test_size: 0.33
+common_params:
+  max_nnz: 20
+  max_solve_time: 60.
 
-model_names:
-  - elastic-net
-  - lars
-  - lasso
-  - omp
-  - ridge
+models:
+  lasso:
+    alpha_ratio: 1.e-1
+    alpha_num: 100
+    fit_intercept: false
+  enet:
+    alpha_ratio: 1.e-1
+    alpha_num: 100
+    fit_intercept: false
+  omp:
+    fit_intercept: false
+    
+stats:
+  mse:
+    scale: log
+  f1s:
+    scale: linear
+  time:
+    scale: log

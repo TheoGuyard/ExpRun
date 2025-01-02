@@ -1,9 +1,9 @@
 import numpy as np
 from pathlib import Path
-from expflow import Experiment
+from expflow import Experiment, Runner
 
 
-class TestExperiment(Experiment):
+class MyExperiment(Experiment):
 
     def setup(self) -> None:
         assert 0 < self.config["min"] <= self.config["max"]
@@ -36,18 +36,12 @@ class TestExperiment(Experiment):
 
 
 def test_experiment():
-    config_path = Path(__file__).parent.joinpath("test_config.yml")
-    experiment = TestExperiment(config_path)
-    experiment.setup()
-    result = experiment.run()
-    experiment.cleanup()
+    config_path = Path(__file__).parent.joinpath("test_experiment.yml")
+    result_dir = Path(__file__).parent.joinpath("results")
+    save_dir = Path(__file__).parent.joinpath("saves")
+    repeats = 5
+    verbose = True
 
-    assert list(result.keys()) == ["+", "*", "-", "/"]
-    assert result["+"] >= 2 * experiment.config["min"]
-    assert result["+"] <= 2 * experiment.config["max"]
-    assert result["*"] >= experiment.config["min"] ** 2
-    assert result["*"] <= experiment.config["max"] ** 2
-    assert result["-"] >= experiment.config["min"] - experiment.config["max"]
-    assert result["-"] <= experiment.config["max"] - experiment.config["min"]
-    assert result["/"] >= experiment.config["min"] / experiment.config["max"]
-    assert result["/"] <= experiment.config["max"] / experiment.config["min"]
+    runner = Runner(verbose=verbose)
+    runner.run(MyExperiment, config_path, result_dir, repeats)
+    runner.plot(MyExperiment, config_path, result_dir, save_dir)

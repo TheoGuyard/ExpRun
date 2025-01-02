@@ -49,13 +49,11 @@ class Experiment:
                 matching_results.append(result_data["result"])
         return matching_results
 
-    def save_plot_data(
-        self, plot_data: dict, plots_dir: Union[str, Path]
-    ) -> None:
+    def save_plot(self, plot_data: dict, save_dir: Union[str, Path]) -> None:
         uuid_chars = string.ascii_lowercase
         output_uuid = "".join(random.choice(uuid_chars) for _ in range(20))
         output_name = "{}_{}.pkl".format(self.__class__.__name__, output_uuid)
-        output_path = Path(plots_dir, output_name)
+        output_path = Path(save_dir, output_name)
 
         with open(output_path, "wb") as file:
             data = {"config": self.config, "plot_data": plot_data}
