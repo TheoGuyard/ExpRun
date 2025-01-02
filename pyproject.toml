@@ -1,19 +1,22 @@
 [project]
-name = "expflow"
-description = "Simple and Automatized Numerical Experiments"
-readme = "README.md"
+name = "exprun"
+description = "exprun: Automatized python pipelines to run reproducible experiments."
+readme = {file = "README.md", content-type = "text/markdown"}
 license = {file = "LICENSE", content-type = "text/markdown"}
-authors = [{name = "Théo Guyard", email = "guyard.theo@gmail.com"}]
+authors = [{name = "Theo Guyard", email = "guyard.theo@gmail.com"}]
+requires-python = ">=3.9"
 dependencies = ["pyyaml"]
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "expflow.__version__"}
+version = {attr = "exprun.__version__"}
 
 [project.optional-dependencies]
-dev = ["black", "flake8", "numpy", "pytest"]
+dev = ["black", "build", "flake8", "numpy", "pytest", "twine"]
 
 [project.urls]
+Homepage = "https://github.com/TheoGuyard/ExpRun"
+Issues = "https://github.com/TheoGuyard/ExpRun/issues"
 
 [build-system]
 requires = ["setuptools"]

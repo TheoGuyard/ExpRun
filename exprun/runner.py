@@ -21,7 +21,6 @@ class Runner:
         config_path = Path(config_path)
 
         if self.verbose:
-            print("")
             print("experiment: {}".format(experiment_type.__name__))
             print("config file: {}".format(config_path.name))
             print("results dir: {}".format(results_dir))

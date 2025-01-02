@@ -1,6 +1,6 @@
 import numpy as np
 from pathlib import Path
-from expflow import Experiment, Runner
+from exprun import Experiment, Runner
 
 
 class MyExperiment(Experiment):
