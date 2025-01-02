@@ -14,7 +14,7 @@ from sklearn.linear_model import (
 )
 from sklearn.metrics import mean_squared_error, f1_score
 
-from expflow import Experiment, Runner
+from exprun import Experiment, Runner
 
 
 class RegularizationPath(ABC):

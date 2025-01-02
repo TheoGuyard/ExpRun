@@ -22,5 +22,6 @@ jobs:
         python -m pip install -U .[dev]
     - name: Lint
       run: |
-        flake8 expflow
+        flake8 exprun
         flake8 examples
+        flake8 tests

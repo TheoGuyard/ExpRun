@@ -1,13 +1,13 @@
-# ExpFlow
+# ExpRun
 
-`expflow` allows building simple [python](https://python.org) pipelines for reproducible numerical experiments.
+`exprun` allows building simple [python](https://python.org) pipelines for reproducible numerical experiments.
 
 ## Quick start
 
-With `expflow`, an experiment is run using an instance of the `Runner` class, based on a [yaml](https://yaml.org) configuration file, with a specified results directory, save directory and number of repeats.
+With `exprun`, an experiment is run using an instance of the `Runner` class, based on a [yaml](https://yaml.org) configuration file, with a specified results directory, save directory and number of repeats.
 
 ```python
-from expflow import Experiment, Runner
+from exprun import Experiment, Runner
 
 class MyExperiment(Experiment):
     # Define the experiment here (see below)
@@ -68,15 +68,15 @@ class MyExperiment(Experiment):
 ```
 
 And as simple as that, you have a reproducible experiment that can be run multiple times with different configurations.
-More advanced examples can be found in the [examples](https://github.com/TheoGuyard/ExpFlow/tree/main/examples) directory.
+More advanced examples can be found in the [examples](https://github.com/TheoGuyard/ExpRun/tree/main/examples) directory.
 
 ## Contribute
 
-`expflow` is still in its early stages of development.
-Feel free to contribute by reporting any bugs on the [issue](https://github.com/TheoGuyard/ExpFlow/issues) page or by opening a [pull request](https://github.com/TheoGuyard/ExpFlow/pulls).
+`exprun` is still in its early stages of development.
+Feel free to contribute by reporting any bugs on the [issue](https://github.com/TheoGuyard/ExpRun/issues) page or by opening a [pull request](https://github.com/TheoGuyard/ExpRun/pulls).
 Any feedback or contribution is welcome.
 
 ## License
 
-`expflow` is distributed under the
-[MIT](https://github.com/TheoGuyard/ExpFlow/blob/main/LICENSE) license.
+`exprun` is distributed under the
+[MIT](https://github.com/TheoGuyard/ExpRun/blob/main/LICENSE) license.
