@@ -43,10 +43,6 @@ class Runner:
         save_dir: Union[str, Path, None] = None,
     ) -> None:
 
-        assert issubclass(experiment_type, Experiment)
-        assert isinstance(config_path, Path)
-        assert isinstance(results_dir, Path)
-
         config_path = Path(config_path)
 
         if self.verbose:
