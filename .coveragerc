@@ -1,1 +1,4 @@
-https://github.com/TheoGuyard/bbpy/blob/main/.coveragerc
+[report]
+exclude_lines =
+    @abstractmethod
+    @abc.abstractmethod

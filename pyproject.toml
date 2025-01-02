@@ -12,7 +12,7 @@ dynamic = ["version"]
 version = {attr = "exprun.__version__"}
 
 [project.optional-dependencies]
-dev = ["black", "build", "flake8", "numpy", "pytest", "twine"]
+dev = ["black", "build", "coverage", "flake8", "numpy", "pytest", "twine"]
 
 [project.urls]
 Homepage = "https://github.com/TheoGuyard/ExpRun"
