@@ -1,17 +1,60 @@
 # ExpRun
 
-`exprun` allows building simple [python](https://python.org) pipelines for reproducible numerical experiments.
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/downloads/release/python-390/)
+[![PyPI version](https://badge.fury.io/py/exprun.svg)](https://pypi.org/project/exprun/)
+[![codecov](https://codecov.io/gh/TheoGuyard/ExpRun/graph/badge.svg?token=yqikBSTySk)](https://codecov.io/gh/TheoGuyard/ExpRun)
+[![Test Status](https://github.com/TheoGuyard/exprun/actions/workflows/test.yml/badge.svg)](https://github.com/TheoGuyard/exprun/actions/workflows/test.yml)
+[![License](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/TheoGuyard/ExpRun/blob/main/LICENSE)
+
+*Automatized python pipelines to run reproducible experiments.*
+
+## Installation
+
+`exprun` is available on [pypi](https://pypi.org/project/exprun). The latest version of the package can be installed as
+
+
+```shell
+pip install exprun
+```
 
 ## Quick start
 
-With `exprun`, an experiment is run using an instance of the `Runner` class, based on a [yaml](https://yaml.org) configuration file, with a specified results directory, save directory and number of repeats.
+With `exprun`, an experiment is run using an instance of the `Runner` class, based on a [yaml](https://yaml.org) configuration file, with a specified results directory, save directory, and number of repeats.
+The user is only required to fill the four methods in inherited from the `Experiment` class.
+
+Here is a simple example of experiment that computes the sum of two random numbers drawn uniformly over a specified range.
+The configuration file is as follows.
+
+```yaml
+# file: config.yml
+
+min: 1
+max: 10
+```
+
+The experiment can then be created is as follows.
 
 ```python
+# file: myexperiment.py
+
 from exprun import Experiment, Runner
 
 class MyExperiment(Experiment):
-    # Define the experiment here (see below)
-    ...
+    def setup(self) -> None:
+        # Set up the experiment from the information in the configuration file.
+        ...
+
+    def run(self) -> dict:
+        # Perform one run of the experiment and return the results as a dict.
+        ...
+
+    def cleanup(self) -> None:
+         # Clean up the experimental data.
+        ...
+
+    def plot(self, results: list) -> dict:
+         # Process the results obtained and returns the plot data that must be saved.
+        ...
 
 config_path = './config.yml'
 result_dir = './results/'
@@ -22,51 +65,8 @@ runner.run(MyExperiment, config_path, result_dir, repeats=10)
 runner.plot(MyExperiment, config_path, result_dir, save_dir)
 ```
 
-The above code runs 10 times `MyExperiment`, each result is saved at `result_dir` as a [pickle](https://docs.python.org/3/library/pickle.html) file.
-The results found in this directory that match the current configuration are recovered, plotted, and saved at `save_dir` as a [pickle](https://docs.python.org/3/library/pickle.html) file.
-
-In the `MyExperiment` class, four functions need to be specified by the user:
-
-- `setup(self) -> None`: Set up the experiment from the information in the configuration file.
-- `run(self) -> dict`: Perform one run of the experiment and return the results as a dict.
-- `cleanup(self) -> None`: Clean up the experimental data.
-- `plot(self, results: list) -> dict`: Process the results obtained from a list of all the results found in the results directory that match the configuration file. Returns the plot data that must be saved.
-
-For instance, a simple experiment that computes the sum of two numbers within a range specified in the configuration file could be defined as follows.
-First, let's write the `config.yml` file.
-
-```yaml
-min: 1
-max: 10
-```
-
-Next, let's fill the `MyExperiment` class functions.
-
-```python
-class MyExperiment(Experiment):
-
-    def setup(self) -> None:
-        from random import randrange
-        # You can access the config data from self.config
-        self.a = randrange(self.config["min"], self.config["max"])
-        self.b = randrange(self.config["min"], self.config["max"])
-    
-    def run(self) -> dict:
-        # You can access the data of the setup function
-        return {"sum": self.a + self.b}
-
-    def cleanup(self) -> None:
-        # Nothing to clean up here
-        pass
-
-    def plot(self, results: list) -> dict:
-        # Print the mean of the sums among all the results
-        # found matching the current configuration file
-        sums = [result["sum"] for result in results]
-        print("Mean of sums:", sum(sums) / len(sums))
-        return {"sums": sums}
-```
-
+Launching `python myexperiment.py` runs 10 times `MyExperiment`, each result is saved at `result_dir` and the plot data is saved as a [pickle](https://docs.python.org/3/library/pickle.html) file.
+Then, the results found in the `result_dir` that match the current configuration are recovered, plotted, and saved at `save_dir` as a [pickle](https://docs.python.org/3/library/pickle.html) file.
 And as simple as that, you have a reproducible experiment that can be run multiple times with different configurations.
 More advanced examples can be found in the [examples](https://github.com/TheoGuyard/ExpRun/tree/main/examples) directory.
 
